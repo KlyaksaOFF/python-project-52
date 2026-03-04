@@ -138,7 +138,7 @@ def delete_status(request, pk):
     status = get_object_or_404(Status, pk=pk)
     if request.method == 'POST':
         status.delete()
-        messages.success(request, f'Статус удален')
+        messages.success(request, f'Статус успешно удален')
         return redirect('statuses')
     return render(request, 'status/delete_status.html', {'status': status})
 
@@ -227,7 +227,7 @@ def delete_label(request, pk):
         return render(request, 'label/delete_label.html', {'label': label})
     if request.method == 'POST':
         label.delete()
-        messages.success(request, f'{label.name} remove!')
+        messages.success(request, f'метка успешно удалена')
         return redirect('labels')
     return render(request, 'label/delete_label.html', {'label': label})
 

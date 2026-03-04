@@ -46,7 +46,7 @@ class StatusCRUDTest(TestCase):
         self.assertTrue(Status.objects.filter(name='New Status').exists())
 
         messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any('create' in str(m).lower() for m in messages))
+        self.assertTrue(any('создан' in str(m).lower() for m in messages))
 
     def test_create_status_post_empty(self):
         """Тест создания статуса с пустым именем"""
@@ -75,7 +75,7 @@ class StatusCRUDTest(TestCase):
         self.assertEqual(self.status.name, 'Updated Status')
 
         messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any('updated' in str(m).lower() for m in messages))
+        self.assertTrue(any('обновлен' in str(m).lower() for m in messages))
 
     def test_update_status_post_empty(self):
         """Тест обновления статуса с пустым именем"""
@@ -102,7 +102,7 @@ class StatusCRUDTest(TestCase):
         self.assertFalse(Status.objects.filter(pk=self.status.pk).exists())
 
         messages = list(get_messages(response.wsgi_request))
-        self.assertTrue(any('remove' in str(m).lower() for m in messages))
+        self.assertTrue(any('удален' in str(m).lower() for m in messages))
 
     # Без авторизации
     def test_access_without_login(self):
