@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['webserver',
-                 '127.0.0.1']
+                 '127.0.0.1', 'localhost']
 
 
 LOGIN_URL = '/login/'
