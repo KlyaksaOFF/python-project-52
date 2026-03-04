@@ -14,32 +14,32 @@
       <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/users/">Users</a>
+            <a class="nav-link" href="/users/">Пользователи</a>
           </li>
 
         </ul>
         <ul class="navbar-nav">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="/statuses/">Statuses</a>
+              <a class="nav-link" href="/statuses/">Статусы</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/labels/">Labels</a>
+              <a class="nav-link" href="/labels/">Метки</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/tasks/">Tasks</a>
+              <a class="nav-link" href="/tasks/">Задачи</a>
             </li>
                 <form method="post" action="{% url 'logout' %}" style="display: inline;">
                     {% csrf_token %}
-                    <button type="submit" class="btn nav-link" style="border: none; background: none;">Logout</button>
+                    <button type="submit" class="btn nav-link" style="border: none; background: none;">Выход</button>
                 </form>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="/login/">Login</a>
+              <a class="nav-link" href="/login/">Вход</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/users/create/">Registration</a>
+              <a class="nav-link" href="/users/create/">Регистрация</a>
             </li>
             {% endif %}
         </ul>
