@@ -136,9 +136,14 @@ def status(request):
 @require_http_methods(['GET', 'POST'])
 def delete_status(request, pk):
     status = get_object_or_404(Status, pk=pk)
+
+    if status.tasks_set.exists():
+        messages.error(request, 'Нельзя удалить статус, связанный с задачей')
+        return render(request, 'status/delete_status.html', {'status': status})
+
     if request.method == 'POST':
         status.delete()
-        messages.success(request, f'Статус успешно удален')
+        messages.success(request, 'Статус успешно удален')
         return redirect('statuses')
     return render(request, 'status/delete_status.html', {'status': status})
 
