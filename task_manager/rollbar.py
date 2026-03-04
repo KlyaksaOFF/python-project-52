@@ -1,4 +1,5 @@
 import os
+
 import rollbar
 
 
@@ -13,11 +14,10 @@ def init_rollbar():
     # Добавляем обработчик для обогащения данных
     def payload_handler(payload, **kw):
         # Добавляем информацию о пользователе если доступна
-        from django.contrib.auth.models import User
-        from django.utils.deprecation import MiddlewareMixin
 
         request = kw.get('request')
-        if request and hasattr(request, 'user') and request.user.is_authenticated:
+        if (request and hasattr(request, 'user') and
+                request.user.is_authenticated):
             payload['data']['person'] = {
                 'id': str(request.user.id),
                 'username': request.user.username,

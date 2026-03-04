@@ -1,8 +1,9 @@
-from django.test import TestCase
-from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
-from task_manager.models import Labels, Tasks, Status
+from django.test import TestCase
+from django.urls import reverse
+
+from task_manager.models import Labels, Status, Tasks
 
 
 class LabelsCRUDTest(TestCase):

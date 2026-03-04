@@ -7,8 +7,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 
 from task_manager.models import Labels, Status, Tasks
-from .rollbar import rollbar
+
 from .filters import TasksFilter
+from .rollbar import rollbar
 
 
 @require_http_methods(['GET'])
@@ -220,7 +221,8 @@ def update_label(request, pk):
 def delete_label(request, pk):
     label = get_object_or_404(Labels, pk=pk)
     if label.tasks_set.exists():
-        messages.error(request, 'Cannot delete label because it is linked to tasks')
+        messages.error(request, 'Cannot delete label because '
+                                'it is linked to tasks')
         return render(request, 'label/delete_label.html', {'label': label})
     if request.method == 'POST':
         label.delete()

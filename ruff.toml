@@ -8,6 +8,8 @@ line-length = 80
 "task_manager/migrations/*" = ["F401", "E501"]
 "task_manager/settings.py" = ["F401", "E501"]
 "task_manager/urls.py" = ["F401", "E501"]
+"task_manager/tests/*" = ["F401", "E501", "F841"]
+"task_manager/views.py" = ["E722"]
 
 [lint]
 preview = true
