@@ -222,12 +222,11 @@ def update_label(request, pk):
 def delete_label(request, pk):
     label = get_object_or_404(Labels, pk=pk)
     if label.tasks_set.exists():
-        messages.error(request, 'Cannot delete label because '
-                                'it is linked to tasks')
+        messages.error(request, 'Нельзя удалить метку, связанную с задачей')
         return render(request, 'label/delete_label.html', {'label': label})
     if request.method == 'POST':
         label.delete()
-        messages.success(request, f'метка успешно удалена')
+        messages.success(request, 'Метка успешно удалена')  # Уберите лишние пробелы
         return redirect('labels')
     return render(request, 'label/delete_label.html', {'label': label})
 
