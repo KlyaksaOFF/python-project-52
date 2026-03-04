@@ -138,7 +138,7 @@ def delete_status(request, pk):
     status = get_object_or_404(Status, pk=pk)
 
     if status.tasks_set.exists():
-        messages.error(request, 'Нельзя удалить статус, связанный с задачей')
+        messages.error(request, 'Невозможно удалить статус')
         return render(request, 'status/delete_status.html', {'status': status})
 
     if request.method == 'POST':
