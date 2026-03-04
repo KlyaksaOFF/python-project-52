@@ -10,16 +10,16 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
-                <h2>Delete User</h2>
+                <h2>Удаление пользователя</h2>
             </div>
             <div class="card-body">
-                <p>Are you sure you want to delete user <strong>{{ user.username }}</strong>?</p>
-                <p>This action cannot be undone.</p>
+                <p>Ты уверен, что хочешь удалить пользователя <strong>{{ user.username }}</strong>?</p>
+                <p>Это действие нельзя отменить.</p>
 
                 <form method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Yes, delete</button>
-                    <a href="{% url 'users' %}" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-danger">Да, удалить</button>
+                    <a href="{% url 'users' %}" class="btn btn-secondary">Отменить</a>
                 </form>
             </div>
         </div>
