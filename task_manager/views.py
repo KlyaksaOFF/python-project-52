@@ -43,8 +43,8 @@ def registration_user(request):
             messages.success(request, 'Пользователь успешно зарегистрирован')
             return redirect('login')
 
-        except:
-            messages.error(request, f'уже существует')
+        except IntegrityError:
+            messages.error(request, "уже существует")
 
     return render(request, 'auth/registrations.html')
 
@@ -160,7 +160,7 @@ def status_create(request):
                 Status.objects.create(name=name)
                 messages.success(request, 'Статус успешно создан')
                 return redirect('statuses')
-    except:
+    except IntegrityError:
         messages.error(request, "уже существует")
     return render(request, 'status/create_status.html')
 
@@ -202,7 +202,7 @@ def create_label(request):
                 Labels.objects.create(name=name)
                 messages.success(request, 'Метка успешно создана')
                 return redirect('labels')
-    except:
+    except IntegrityError:
         messages.error(request, "уже существует")
     return render(request, 'label/create_label.html')
 
