@@ -63,9 +63,8 @@
 
         <!-- Кнопка создания задачи (только для авторизованных) -->
         {% if user.is_authenticated %}
-            <form action="{% url 'task_create' %}" method="get" style="display: inline;">
-    <button type="submit" class="btn btn-primary mb-3">Создать задачу</button>
-            </form>
+            <a href="{% url 'task_create' %}" class="btn btn-primary mb-3">Создать задачу</a>
+
         {% endif %}
 
         <!-- Форма фильтрации -->

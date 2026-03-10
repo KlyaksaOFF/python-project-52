@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db import IntegrityError
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
@@ -264,7 +265,7 @@ def create_task(request):
                 task.labels.set(labels)
             messages.success(request, 'Задача успешно создана')
             return redirect('tasks')
-    except:
+    except IntegrityError:
         messages.error(request, "уже существует")
     labels = Labels.objects.all()
     statuses = Status.objects.all()
