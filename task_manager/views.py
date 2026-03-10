@@ -42,8 +42,8 @@ def registration_user(request):
             messages.success(request, 'Пользователь успешно зарегистрирован')
             return redirect('login')
 
-        except Exception as e:
-            messages.error(request, f'Error: {e}')
+        except:
+            messages.error(request, f'уже существует')
 
     return render(request, 'auth/registrations.html')
 
@@ -152,14 +152,15 @@ def delete_status(request, pk):
 @csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def status_create(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        if name:
-            Status.objects.create(name=name)
-            messages.success(request, 'Статус успешно создан')
-            return redirect('statuses')
-        else:
-            messages.error(request, "Error")
+    try:
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            if name:
+                Status.objects.create(name=name)
+                messages.success(request, 'Статус успешно создан')
+                return redirect('statuses')
+    except:
+        messages.error(request, "уже существует")
     return render(request, 'status/create_status.html')
 
 
