@@ -38,6 +38,7 @@ jobs:
           args: >
             -Dsonar.projectKey=KlyaksaOFF_python-project-52
             -Dsonar.organization=klyaksaoff
-            -Dsonar.sources=python-project-52
+            -Dsonar.sources=.
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.exclusions=staticfiles/**,static/**
